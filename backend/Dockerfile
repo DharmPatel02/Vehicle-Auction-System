@@ -5,7 +5,7 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 # ----------- STAGE 2: Run the JAR -------------
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-jre-jammy
 WORKDIR /app
 COPY --from=builder /app/target/auction-system-0.0.1-SNAPSHOT.jar app.jar
 # Port is dynamically configured via environment variable in application.properties
